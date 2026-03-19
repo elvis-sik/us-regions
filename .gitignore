@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+out/*.apkg
+out/*.colpkg
+media/**/*.png
+media/**/*.jpg
+media/**/*.jpeg
+media/**/*.webp

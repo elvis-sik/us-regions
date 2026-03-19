@@ -1,0 +1,19 @@
+[project]
+name = "us-regions"
+version = "0.1.0"
+description = "Tools to build an Anki deck for U.S. Census regions and divisions."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+deck = [
+  "genanki>=0.13.0",
+  "requests>=2.31.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
