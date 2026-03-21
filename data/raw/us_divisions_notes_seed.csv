@@ -1,10 +1,52 @@
 division_name,region_name,blank_map_source,locator_map_source,neighboring_divisions,neighboring_countries,neighboring_oceans,member_states,member_state_codes,state_border_summary,source_notes
-New England,Northeast,,,"Mid-Atlantic",Canada,Atlantic Ocean,"Connecticut | Maine | Massachusetts | New Hampshire | Rhode Island | Vermont","CT|ME|MA|NH|RI|VT",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-Mid-Atlantic,Northeast,,,"New England | East North Central | South Atlantic",Canada,Atlantic Ocean,"New Jersey | New York | Pennsylvania","NJ|NY|PA",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-East North Central,Midwest,,,"Mid-Atlantic | West North Central | South Atlantic | East South Central",Canada,,"Illinois | Indiana | Michigan | Ohio | Wisconsin","IL|IN|MI|OH|WI",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-West North Central,Midwest,,,"East North Central | East South Central | West South Central | Mountain",Canada,,"Iowa | Kansas | Minnesota | Missouri | Nebraska | North Dakota | South Dakota","IA|KS|MN|MO|NE|ND|SD",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-South Atlantic,South,,,"Mid-Atlantic | East North Central | East South Central",,Atlantic Ocean,"Delaware | District of Columbia | Florida | Georgia | Maryland | North Carolina | South Carolina | Virginia | West Virginia","DE|DC|FL|GA|MD|NC|SC|VA|WV",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-East South Central,South,,,"East North Central | West North Central | South Atlantic | West South Central",,,"Alabama | Kentucky | Mississippi | Tennessee","AL|KY|MS|TN",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-West South Central,South,,,"West North Central | East South Central | Mountain",Mexico,Gulf of Mexico,"Arkansas | Louisiana | Oklahoma | Texas","AR|LA|OK|TX",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-Mountain,West,,,"West North Central | West South Central | Pacific",Canada | Mexico,,"Arizona | Colorado | Idaho | Montana | Nevada | New Mexico | Utah | Wyoming","AZ|CO|ID|MT|NV|NM|UT|WY",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
-Pacific,West,,,"Mountain",Canada | Mexico,"Pacific Ocean | Arctic Ocean","Alaska | California | Hawaii | Oregon | Washington","AK|CA|HI|OR|WA",TODO,"Seeded from Census regions/divisions listed on Wikipedia; per-state border summary still to be added."
+New England,Northeast,,,Mid-Atlantic,Canada,Atlantic Ocean,Connecticut | Maine | Massachusetts | New Hampshire | Rhode Island | Vermont,CT|ME|MA|NH|RI|VT,"Connecticut: states: Massachusetts, New York, Rhode Island; oceans: Atlantic Ocean
+Maine: states: New Hampshire; countries: Canada; oceans: Atlantic Ocean
+Massachusetts: states: Connecticut, New Hampshire, New York, Rhode Island, Vermont; oceans: Atlantic Ocean
+New Hampshire: states: Massachusetts, Maine, Vermont; countries: Canada; oceans: Atlantic Ocean
+Rhode Island: states: Connecticut, Massachusetts; oceans: Atlantic Ocean
+Vermont: states: Massachusetts, New Hampshire, New York; countries: Canada",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+Mid-Atlantic,Northeast,,,New England | East North Central | South Atlantic,Canada,Atlantic Ocean,New Jersey | New York | Pennsylvania,NJ|NY|PA,"New Jersey: states: Delaware, New York, Pennsylvania; oceans: Atlantic Ocean
+New York: states: Connecticut, Massachusetts, New Jersey, Pennsylvania, Vermont; countries: Canada; oceans: Atlantic Ocean
+Pennsylvania: states: Delaware, Maryland, New Jersey, New York, Ohio, West Virginia",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+East North Central,Midwest,,,Mid-Atlantic | West North Central | South Atlantic | East South Central,Canada,,Illinois | Indiana | Michigan | Ohio | Wisconsin,IL|IN|MI|OH|WI,"Illinois: states: Iowa, Indiana, Kentucky, Missouri, Wisconsin
+Indiana: states: Illinois, Kentucky, Michigan, Ohio
+Michigan: states: Indiana, Ohio, Wisconsin; countries: Canada
+Ohio: states: Indiana, Kentucky, Michigan, Pennsylvania, West Virginia
+Wisconsin: states: Iowa, Illinois, Michigan, Minnesota",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+West North Central,Midwest,,,East North Central | East South Central | West South Central | Mountain,Canada,,Iowa | Kansas | Minnesota | Missouri | Nebraska | North Dakota | South Dakota,IA|KS|MN|MO|NE|ND|SD,"Iowa: states: Illinois, Minnesota, Missouri, Nebraska, South Dakota, Wisconsin
+Kansas: states: Colorado, Missouri, Nebraska, Oklahoma
+Minnesota: states: Iowa, North Dakota, South Dakota, Wisconsin; countries: Canada
+Missouri: states: Arkansas, Iowa, Illinois, Kansas, Kentucky, Nebraska, Oklahoma, Tennessee
+Nebraska: states: Colorado, Iowa, Kansas, Missouri, South Dakota, Wyoming
+North Dakota: states: Minnesota, Montana, South Dakota; countries: Canada
+South Dakota: states: Iowa, Minnesota, Montana, North Dakota, Nebraska, Wyoming",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+South Atlantic,South,,,Mid-Atlantic | East North Central | East South Central,,Atlantic Ocean,Delaware | District of Columbia | Florida | Georgia | Maryland | North Carolina | South Carolina | Virginia | West Virginia,DE|DC|FL|GA|MD|NC|SC|VA|WV,"Delaware: states: Maryland, New Jersey, Pennsylvania; oceans: Atlantic Ocean
+District of Columbia: states: Maryland, Virginia
+Florida: states: Alabama, Georgia; oceans: Atlantic Ocean, Gulf of Mexico
+Georgia: states: Alabama, Florida, North Carolina, South Carolina; oceans: Atlantic Ocean
+Maryland: states: Delaware, Pennsylvania, Virginia, West Virginia; oceans: Atlantic Ocean
+North Carolina: states: Georgia, South Carolina, Tennessee, Virginia; oceans: Atlantic Ocean
+South Carolina: states: Georgia, North Carolina; oceans: Atlantic Ocean
+Virginia: states: Kentucky, Maryland, North Carolina, Tennessee, West Virginia; oceans: Atlantic Ocean
+West Virginia: states: Kentucky, Maryland, Ohio, Pennsylvania, Virginia",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+East South Central,South,,,East North Central | West North Central | South Atlantic | West South Central,,,Alabama | Kentucky | Mississippi | Tennessee,AL|KY|MS|TN,"Alabama: states: Florida, Georgia, Mississippi, Tennessee; oceans: Gulf of Mexico
+Kentucky: states: Illinois, Indiana, Missouri, Ohio, Tennessee, Virginia, West Virginia
+Mississippi: states: Alabama, Arkansas, Louisiana, Tennessee; oceans: Gulf of Mexico
+Tennessee: states: Alabama, Arkansas, Georgia, Kentucky, Mississippi, Missouri, North Carolina, Virginia",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+West South Central,South,,,West North Central | East South Central | Mountain,Mexico,Gulf of Mexico,Arkansas | Louisiana | Oklahoma | Texas,AR|LA|OK|TX,"Arkansas: states: Louisiana, Missouri, Mississippi, Oklahoma, Tennessee, Texas
+Louisiana: states: Arkansas, Mississippi, Texas; oceans: Gulf of Mexico
+Oklahoma: states: Arkansas, Colorado, Kansas, Missouri, New Mexico, Texas
+Texas: states: Arkansas, Louisiana, New Mexico, Oklahoma; countries: Mexico; oceans: Gulf of Mexico",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+Mountain,West,,,West North Central | West South Central | Pacific,Canada | Mexico,,Arizona | Colorado | Idaho | Montana | Nevada | New Mexico | Utah | Wyoming,AZ|CO|ID|MT|NV|NM|UT|WY,"Arizona: states: California, Colorado, New Mexico, Nevada, Utah; countries: Mexico
+Colorado: states: Arizona, Kansas, Nebraska, New Mexico, Oklahoma, Utah, Wyoming
+Idaho: states: Montana, Nevada, Oregon, Utah, Washington, Wyoming; countries: Canada
+Montana: states: Idaho, North Dakota, South Dakota, Wyoming; countries: Canada
+Nevada: states: Arizona, California, Idaho, Oregon, Utah
+New Mexico: states: Arizona, Colorado, Oklahoma, Texas, Utah; countries: Mexico
+Utah: states: Arizona, Colorado, Idaho, New Mexico, Nevada, Wyoming
+Wyoming: states: Colorado, Idaho, Montana, Nebraska, South Dakota, Utah",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.
+Pacific,West,,,Mountain,Canada | Mexico,Pacific Ocean | Arctic Ocean,Alaska | California | Hawaii | Oregon | Washington,AK|CA|HI|OR|WA,"Alaska: countries: Canada; oceans: Arctic Ocean, Pacific Ocean
+California: states: Arizona, Nevada, Oregon; countries: Mexico; oceans: Pacific Ocean
+Hawaii: oceans: Pacific Ocean
+Oregon: states: California, Idaho, Nevada, Washington; oceans: Pacific Ocean
+Washington: states: Idaho, Oregon; countries: Canada; oceans: Pacific Ocean",Seeded from Census regions/divisions listed on Wikipedia; state-border summary populated from us_state_border_reference.csv.

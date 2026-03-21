@@ -1,0 +1,52 @@
+state_code,state_name,neighbor_state_codes,neighbor_countries,neighbor_oceans
+AK,Alaska,,Canada,"Arctic Ocean | Pacific Ocean"
+AL,Alabama,"FL | GA | MS | TN",,Gulf of Mexico
+AR,Arkansas,"LA | MO | MS | OK | TN | TX",,
+AZ,Arizona,"CA | CO | NM | NV | UT",Mexico,
+CA,California,"AZ | NV | OR",Mexico,Pacific Ocean
+CO,Colorado,"AZ | KS | NE | NM | OK | UT | WY",,
+CT,Connecticut,"MA | NY | RI",,Atlantic Ocean
+DC,District of Columbia,"MD | VA",,
+DE,Delaware,"MD | NJ | PA",,Atlantic Ocean
+FL,Florida,"AL | GA",,"Atlantic Ocean | Gulf of Mexico"
+GA,Georgia,"AL | FL | NC | SC",,Atlantic Ocean
+HI,Hawaii,,,Pacific Ocean
+IA,Iowa,"IL | MN | MO | NE | SD | WI",,
+ID,Idaho,"MT | NV | OR | UT | WA | WY",Canada,
+IL,Illinois,"IA | IN | KY | MO | WI",,
+IN,Indiana,"IL | KY | MI | OH",,
+KS,Kansas,"CO | MO | NE | OK",,
+KY,Kentucky,"IL | IN | MO | OH | TN | VA | WV",,
+LA,Louisiana,"AR | MS | TX",,Gulf of Mexico
+MA,Massachusetts,"CT | NH | NY | RI | VT",,Atlantic Ocean
+MD,Maryland,"DE | PA | VA | WV",,Atlantic Ocean
+ME,Maine,NH,Canada,Atlantic Ocean
+MI,Michigan,"IN | OH | WI",Canada,
+MN,Minnesota,"IA | ND | SD | WI",Canada,
+MO,Missouri,"AR | IA | IL | KS | KY | NE | OK | TN",,
+MS,Mississippi,"AL | AR | LA | TN",,Gulf of Mexico
+MT,Montana,"ID | ND | SD | WY",Canada,
+NC,North Carolina,"GA | SC | TN | VA",,Atlantic Ocean
+ND,North Dakota,"MN | MT | SD",Canada,
+NE,Nebraska,"CO | IA | KS | MO | SD | WY",,
+NH,New Hampshire,"MA | ME | VT",Canada,Atlantic Ocean
+NJ,New Jersey,"DE | NY | PA",,Atlantic Ocean
+NM,New Mexico,"AZ | CO | OK | TX | UT",Mexico,
+NV,Nevada,"AZ | CA | ID | OR | UT",,
+NY,New York,"CT | MA | NJ | PA | VT",Canada,Atlantic Ocean
+OH,Ohio,"IN | KY | MI | PA | WV",,
+OK,Oklahoma,"AR | CO | KS | MO | NM | TX",,
+OR,Oregon,"CA | ID | NV | WA",,Pacific Ocean
+PA,Pennsylvania,"DE | MD | NJ | NY | OH | WV",,
+RI,Rhode Island,"CT | MA",,Atlantic Ocean
+SC,South Carolina,"GA | NC",,Atlantic Ocean
+SD,South Dakota,"IA | MN | MT | ND | NE | WY",,
+TN,Tennessee,"AL | AR | GA | KY | MS | MO | NC | VA",,
+TX,Texas,"AR | LA | NM | OK",Mexico,Gulf of Mexico
+UT,Utah,"AZ | CO | ID | NM | NV | WY",,
+VA,Virginia,"KY | MD | NC | TN | WV",,Atlantic Ocean
+VT,Vermont,"MA | NH | NY",Canada,
+WA,Washington,"ID | OR",Canada,Pacific Ocean
+WI,Wisconsin,"IA | IL | MI | MN",,
+WV,West Virginia,"KY | MD | OH | PA | VA",,
+WY,Wyoming,"CO | ID | MT | NE | SD | UT",,

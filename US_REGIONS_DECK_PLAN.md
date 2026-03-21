@@ -93,10 +93,11 @@ Initial scaffold files:
 - [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
 - [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)
 - [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv)
+- [`data/raw/us_state_border_reference.csv`](data/raw/us_state_border_reference.csv)
 
-Planned follow-up files:
+Current support files:
 
-- a media manifest for blank and locator maps
+- a media manifest for blank and reference maps
 - a state border reference table used to generate `state_border_summary`
 
 ## Media Plan
@@ -109,7 +110,7 @@ We need two families of map assets:
 Current preferred approach:
 
 - use Wikimedia's `Blank US Map (states only).svg` as the canonical blank base
-- generate all region and division locator maps from that base using the SVG's per-state IDs
+- generate all region and division locator maps from that base using the SVG's per-state class tokens
 - keep a labeled Census reference map around as a QA target, not as the learner-facing blank prompt
 
 Preferred asset characteristics:

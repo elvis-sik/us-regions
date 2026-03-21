@@ -32,4 +32,4 @@
 
 ## Build Notes
 
-The current plan is to derive locator maps from a single blank U.S. SVG whose state paths are keyed by two-letter abbreviations.
+The current plan is to derive locator maps from a single blank U.S. SVG whose state shapes are keyed by two-letter class abbreviations.

@@ -33,6 +33,7 @@ Seed data lives in:
 - [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
 - [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)
 - [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv)
+- [`data/raw/us_state_border_reference.csv`](data/raw/us_state_border_reference.csv)
 
 ## Initial Scope
 
@@ -59,3 +60,23 @@ The repo is currently a planning and data-seeding scaffold. The next implementat
 2. generate region and division locator maps from state-code membership
 3. enrich the division notes with per-state border summaries
 4. build an APKG export script
+
+## Build Workflow
+
+Fetch the source map assets:
+
+```sh
+.venv/bin/python scripts/fetch_map_assets.py
+```
+
+Generate the region and division locator SVGs:
+
+```sh
+.venv/bin/python scripts/generate_locator_maps.py
+```
+
+Populate the division state-border summaries from the state reference table:
+
+```sh
+.venv/bin/python scripts/populate_division_border_summaries.py
+```
