@@ -18,7 +18,9 @@
    Comma-separated Census divisions within the region.
 8. `member_states`
    Comma-separated states plus the District of Columbia where applicable.
-9. `source_notes`
+9. `member_state_codes`
+   Pipe-separated USPS state codes used to generate locator maps from the blank SVG.
+10. `source_notes`
    Provenance and caveats for the note.
 
 ## Card Templates
@@ -27,3 +29,7 @@
 2. `Region + Blank Map -> Locator Map`
 3. `Locator Map -> Region Name`
 4. `Region -> Divisions`
+
+## Build Notes
+
+The current plan is to derive locator maps from a single blank U.S. SVG whose state paths are keyed by two-letter abbreviations.

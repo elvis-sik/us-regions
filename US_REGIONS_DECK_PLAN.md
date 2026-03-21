@@ -44,6 +44,7 @@ Minimum fields:
 - `neighboring_oceans`
 - `member_divisions`
 - `member_states`
+- `member_state_codes`
 - `source_notes`
 
 ### 2. Division Note Type
@@ -72,6 +73,7 @@ Minimum fields:
 - `neighboring_countries`
 - `neighboring_oceans`
 - `member_states`
+- `member_state_codes`
 - `state_border_summary`
 - `source_notes`
 
@@ -79,9 +81,10 @@ Minimum fields:
 
 1. Keep `regions` and `divisions` as separate notes instead of squeezing everything into one note type.
 2. Preserve both `member_divisions` and `member_states` on region notes so region cards can stay useful even if division cards are temporarily incomplete.
-3. Store border summaries as human-readable text first; later we can derive chips or grouped HTML blocks at build time.
-4. Treat oceans and countries as first-class neighbors because they are part of the memory target, not just decorative notes.
-5. Use a shared `blank_map` field so every map-recognition card starts from the same base visual.
+3. Store `member_state_codes` alongside full state names so locator maps can be generated programmatically from one SVG base map.
+4. Store border summaries as human-readable text first; later we can derive chips or grouped HTML blocks at build time.
+5. Treat oceans and countries as first-class neighbors because they are part of the memory target, not just decorative notes.
+6. Use a shared `blank_map` field so every map-recognition card starts from the same base visual.
 
 ## Data Files
 
@@ -89,6 +92,7 @@ Initial scaffold files:
 
 - [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
 - [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)
+- [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv)
 
 Planned follow-up files:
 
@@ -102,6 +106,12 @@ We need two families of map assets:
 1. One shared blank U.S. base map suitable for both region and division cards
 2. Locator maps for each of the four regions and nine divisions
 
+Current preferred approach:
+
+- use Wikimedia's `Blank US Map (states only).svg` as the canonical blank base
+- generate all region and division locator maps from that base using the SVG's per-state IDs
+- keep a labeled Census reference map around as a QA target, not as the learner-facing blank prompt
+
 Preferred asset characteristics:
 
 - vector-first when possible
@@ -112,10 +122,11 @@ Preferred asset characteristics:
 ## Milestones
 
 1. Confirm the hierarchy and seed the raw region and division tables.
-2. Identify reusable blank-map and locator-map assets, ideally from Wikimedia Commons or Census-derived public sources.
-3. Add a state border reference layer for the division notes.
-4. Build APKG generation scripts and note templates.
-5. Export and review the first deck package.
+2. Fetch the shared blank map and reference maps from the source manifest.
+3. Generate region and division locator maps from state-code membership.
+4. Add a state border reference layer for the division notes.
+5. Build APKG generation scripts and note templates.
+6. Export and review the first deck package.
 
 ## Open Questions
 

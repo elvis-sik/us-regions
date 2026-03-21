@@ -32,6 +32,7 @@ Seed data lives in:
 
 - [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
 - [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)
+- [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv)
 
 ## Initial Scope
 
@@ -54,6 +55,7 @@ Planned division cards:
 
 The repo is currently a planning and data-seeding scaffold. The next implementation milestones are:
 
-1. verify and fetch reusable blank-map and locator-map assets
-2. enrich the division notes with per-state border summaries
-3. build an APKG export script
+1. fetch the shared blank map and reference maps from the source manifest
+2. generate region and division locator maps from state-code membership
+3. enrich the division notes with per-state border summaries
+4. build an APKG export script

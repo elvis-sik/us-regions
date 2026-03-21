@@ -18,9 +18,11 @@
    Oceans or named coast-facing bodies of water we decide to treat as deck-relevant neighbors.
 8. `member_states`
    Comma-separated states plus the District of Columbia where applicable.
-9. `state_border_summary`
+9. `member_state_codes`
+   Pipe-separated USPS state codes used to generate locator maps from the blank SVG.
+10. `state_border_summary`
    Multiline field describing, for each member state, the states, countries, and oceans it borders.
-10. `source_notes`
+11. `source_notes`
    Provenance and caveats for the note.
 
 ## Card Templates
@@ -30,3 +32,7 @@
 3. `Division + Blank Map -> Locator Map`
 4. `Locator Map -> Division`
 5. `Division -> Per-state border summary`
+
+## Build Notes
+
+The current plan is to derive locator maps from a single blank U.S. SVG whose state paths are keyed by two-letter abbreviations.
