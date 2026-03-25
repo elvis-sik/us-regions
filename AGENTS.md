@@ -2,7 +2,7 @@
 
 ## Scope
 
-These instructions apply to `.`.
+These instructions apply to this repository.
 
 ## Repo Goal
 

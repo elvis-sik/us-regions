@@ -98,7 +98,7 @@ Minimum fields:
 
 ## Data Files
 
-Initial scaffold files:
+Current source files:
 
 - [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
 - [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)

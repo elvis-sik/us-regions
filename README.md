@@ -1,90 +1,102 @@
 # us-regions
 
-This repository is a scaffold for an Anki deck about the U.S. Census Bureau's four regions and nine divisions.
+An Anki deck generator for the U.S. Census Bureau's four regions and nine divisions, with map-based cards for regions, divisions, and member states.
 
-Primary source:
+## AI provenance
 
-- [List of regions of the United States](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States)
+This repository was created with substantial AI assistance, including:
 
-Working assumption for this repo:
+- project scaffolding
+- source-data shaping
+- SVG map-generation scripts
+- Genanki deck-building code
+- documentation drafts
+
+Everything here should be treated as editable project output, not as an authority in itself. Human review is still important, especially for geography wording, card ergonomics, and public-facing polish.
+
+## What this repo builds
+
+The deck teaches the standard Census hierarchy:
+
+- Regions: `Northeast`, `Midwest`, `South`, `West`
+- Divisions: `New England`, `Mid-Atlantic`, `East North Central`, `West North Central`, `South Atlantic`, `East South Central`, `West South Central`, `Mountain`, `Pacific`
+
+Working scope for this project:
 
 - use the Census Bureau's four regions and nine divisions as the canonical hierarchy
 - include the District of Columbia with `South Atlantic`
-- exclude Puerto Rico and other U.S. territories from the deck's core hierarchy because they are not part of any Census region or division in the linked source
+- exclude Puerto Rico and other U.S. territories from the core deck because they are not assigned to a Census region or division in the source hierarchy used here
 
-## Note Types
+## Card set
 
-This deck is intentionally split into two note types:
-
-1. Region notes
-2. Division notes
-
-The field contracts live in:
-
-- [`REGION_NOTE_TYPE.md`](REGION_NOTE_TYPE.md)
-- [`DIVISION_NOTE_TYPE.md`](DIVISION_NOTE_TYPE.md)
-
-The project plan lives in:
-
-- [`US_REGIONS_DECK_PLAN.md`](US_REGIONS_DECK_PLAN.md)
-
-Seed data lives in:
-
-- [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv)
-- [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv)
-- [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv)
-- [`data/raw/us_state_border_reference.csv`](data/raw/us_state_border_reference.csv)
-
-## Initial Scope
-
-Planned region cards:
+Region cards:
 
 1. Region -> neighboring regions / countries / oceans
-2. Region name + blank map -> locator map
+2. Region + blank map -> locator map
 3. Locator map -> region name
 4. Region -> divisions
 
-Planned division cards:
+Division cards:
 
 1. Division -> region
 2. Division -> neighboring divisions / countries / oceans
-3. Division name + blank map -> locator map
+3. Division + blank map -> locator map
 4. Locator map -> division name
 5. Division -> states
 6. Division -> per-state border summary
 
-## Project Status
+Visual answer support includes:
 
-The repo is currently a planning and data-seeding scaffold. The next implementation milestones are:
+- locator maps for every region and division
+- unlabeled region-division membership maps
+- unlabeled division-state membership maps
 
-1. fetch the shared blank map and reference maps from the source manifest
-2. generate region and division locator maps from state-code membership
-3. enrich the division notes with per-state border summaries
-4. build an APKG export script
+## Repository layout
 
-## Build Workflow
+- [`data/raw/us_regions_notes_seed.csv`](data/raw/us_regions_notes_seed.csv): seeded region notes
+- [`data/raw/us_divisions_notes_seed.csv`](data/raw/us_divisions_notes_seed.csv): seeded division notes
+- [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv): map-source manifest
+- [`data/raw/us_state_border_reference.csv`](data/raw/us_state_border_reference.csv): reusable state adjacency reference
+- [`scripts/fetch_map_assets.py`](scripts/fetch_map_assets.py): downloads shared source maps
+- [`scripts/generate_locator_maps.py`](scripts/generate_locator_maps.py): generates locator and membership SVGs
+- [`scripts/populate_division_border_summaries.py`](scripts/populate_division_border_summaries.py): fills division state-border summaries
+- [`scripts/build_apkg.py`](scripts/build_apkg.py): builds the Anki package
+- [`REGION_NOTE_TYPE.md`](REGION_NOTE_TYPE.md): region note contract
+- [`DIVISION_NOTE_TYPE.md`](DIVISION_NOTE_TYPE.md): division note contract
+- [`US_REGIONS_DECK_PLAN.md`](US_REGIONS_DECK_PLAN.md): planning notes and modeling decisions
 
-Install the deck-building dependencies:
+## Data and media model
+
+The project uses one shared blank U.S. SVG as the canonical base map and derives the rest of the visual assets programmatically:
+
+- region locator maps
+- division locator maps
+- region division-membership maps
+- division state-membership maps
+
+That keeps the visual style consistent and makes the deck reproducible from the source CSVs instead of depending on a pile of manually edited image files.
+
+## Build
+
+Install dependencies:
 
 ```sh
 uv sync --extra deck
 ```
 
-Fetch the source map assets:
+Fetch source maps:
 
 ```sh
 .venv/bin/python scripts/fetch_map_assets.py
 ```
 
-Generate the region and division locator SVGs:
+Generate locator and membership SVGs:
 
 ```sh
 .venv/bin/python scripts/generate_locator_maps.py
 ```
 
-That step now also generates unlabeled region-division answer maps and division-state answer maps used on the backs of the membership cards.
-
-Populate the division state-border summaries from the state reference table:
+Populate division state-border summaries:
 
 ```sh
 .venv/bin/python scripts/populate_division_border_summaries.py
@@ -99,3 +111,18 @@ Build the Anki package:
 Output:
 
 - `out/us-regions.apkg`
+
+## Sources
+
+Primary reference:
+
+- [List of regions of the United States](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States)
+
+Map provenance is documented in [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv).
+
+## Notes for a future public release
+
+- review card wording for mnemonic quality, not just factual correctness
+- visually inspect the generated maps in Anki before publishing
+- keep generated outputs reproducible from the checked-in CSV and script pipeline
+- consider adding screenshots once the card styling is fully settled
