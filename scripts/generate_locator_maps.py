@@ -13,6 +13,8 @@ DIVISION_CSV = REPO_ROOT / "data/raw/us_divisions_notes_seed.csv"
 BLANK_MAP = REPO_ROOT / "media/blank/us_blank_map_states_only.svg"
 REGION_OUTPUT_DIR = REPO_ROOT / "media/locator/regions"
 DIVISION_OUTPUT_DIR = REPO_ROOT / "media/locator/divisions"
+REGION_MEMBERSHIP_OUTPUT_DIR = REPO_ROOT / "media/membership/regions"
+DIVISION_MEMBERSHIP_OUTPUT_DIR = REPO_ROOT / "media/membership/divisions"
 
 SVG_NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", SVG_NS)
@@ -21,6 +23,23 @@ HIGHLIGHT_FILL = "#356d2e"
 DEFAULT_FILL = "#f4f1e9"
 DEFAULT_STROKE = "#ffffff"
 DEFAULT_STROKE_WIDTH = "1.5"
+DIVISION_PALETTE = [
+    "#2f6a3a",
+    "#3e7aa8",
+    "#b6924b",
+    "#a75c3d",
+]
+STATE_PALETTE = [
+    "#2f6a3a",
+    "#4474a3",
+    "#b6924b",
+    "#a75c3d",
+    "#7a5fa1",
+    "#9b8748",
+    "#3f8f7d",
+    "#a14f6b",
+    "#5e7f2b",
+]
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -61,16 +80,33 @@ def state_elements(root: ET.Element) -> list[ET.Element]:
     return out
 
 
-def write_locator(source_svg: Path, output_path: Path, title: str, state_codes: set[str]) -> None:
-    tree = ET.parse(source_svg)
-    root = tree.getroot()
-
+def validate_codes(output_name: str, root: ET.Element, state_codes: set[str]) -> None:
     present_codes = {code for element in state_elements(root) if (code := state_code_for_element(element))}
     missing_codes = sorted(code for code in state_codes if code not in present_codes)
     if missing_codes:
         raise ValueError(
-            f"{output_path.name}: missing state classes in blank map: {', '.join(missing_codes)}"
+            f"{output_name}: missing state classes in blank map: {', '.join(missing_codes)}"
         )
+
+
+def reset_svg_title(root: ET.Element, title: str, desc: str) -> None:
+    root.set("aria-label", title)
+    for child in list(root):
+        if local_name(child.tag) in {"title", "desc"}:
+            root.remove(child)
+    title_el = ET.Element(f"{{{SVG_NS}}}title")
+    title_el.text = title
+    desc_el = ET.Element(f"{{{SVG_NS}}}desc")
+    desc_el.text = desc
+    root.insert(0, desc_el)
+    root.insert(0, title_el)
+
+
+def write_locator(source_svg: Path, output_path: Path, title: str, state_codes: set[str]) -> None:
+    tree = ET.parse(source_svg)
+    root = tree.getroot()
+
+    validate_codes(output_path.name, root, state_codes)
 
     for element in state_elements(root):
         state_code = state_code_for_element(element)
@@ -81,16 +117,31 @@ def write_locator(source_svg: Path, output_path: Path, title: str, state_codes: 
         element.set("stroke", DEFAULT_STROKE)
         element.set("stroke-width", DEFAULT_STROKE_WIDTH)
 
-    root.set("aria-label", title)
-    for child in list(root):
-        if local_name(child.tag) in {"title", "desc"}:
-            root.remove(child)
-    title_el = ET.Element(f"{{{SVG_NS}}}title")
-    title_el.text = title
-    desc_el = ET.Element(f"{{{SVG_NS}}}desc")
-    desc_el.text = f"Locator map highlighting {title}."
-    root.insert(0, desc_el)
-    root.insert(0, title_el)
+    reset_svg_title(root, title, f"Locator map highlighting {title}.")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    tree.write(output_path, encoding="utf-8", xml_declaration=True)
+
+
+def write_palette_map(
+    source_svg: Path,
+    output_path: Path,
+    title: str,
+    state_to_fill: dict[str, str],
+    desc: str,
+) -> None:
+    tree = ET.parse(source_svg)
+    root = tree.getroot()
+
+    validate_codes(output_path.name, root, set(state_to_fill))
+
+    for element in state_elements(root):
+        state_code = state_code_for_element(element)
+        element.set("fill", state_to_fill.get(state_code, DEFAULT_FILL))
+        element.set("stroke", DEFAULT_STROKE)
+        element.set("stroke-width", DEFAULT_STROKE_WIDTH)
+
+    reset_svg_title(root, title, desc)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     tree.write(output_path, encoding="utf-8", xml_declaration=True)
@@ -113,6 +164,68 @@ def generate_group(rows: list[dict[str, str]], name_field: str, output_dir: Path
     return written
 
 
+def build_region_division_membership_maps(
+    region_rows: list[dict[str, str]],
+    division_rows: list[dict[str, str]],
+) -> int:
+    divisions_by_region: dict[str, list[dict[str, str]]] = {}
+    for row in division_rows:
+        region_name = (row.get("region_name") or "").strip()
+        divisions_by_region.setdefault(region_name, []).append(row)
+
+    written = 0
+    for region_row in region_rows:
+        region_name = (region_row.get("region_name") or "").strip()
+        if not region_name:
+            continue
+        color_map: dict[str, str] = {}
+        for index, division_row in enumerate(divisions_by_region.get(region_name, [])):
+            fill = DIVISION_PALETTE[index % len(DIVISION_PALETTE)]
+            for code in parse_codes(division_row.get("member_state_codes") or ""):
+                color_map[code] = fill
+        if not color_map:
+            continue
+        output_path = REGION_MEMBERSHIP_OUTPUT_DIR / f"{slugify(region_name)}_divisions_map.svg"
+        write_palette_map(
+            BLANK_MAP,
+            output_path,
+            f"{region_name} divisions",
+            color_map,
+            f"Unlabeled map showing the Census divisions within {region_name}.",
+        )
+        print(f"write {output_path.relative_to(REPO_ROOT)}")
+        written += 1
+    return written
+
+
+def build_division_state_membership_maps(division_rows: list[dict[str, str]]) -> int:
+    written = 0
+    for division_row in division_rows:
+        division_name = (division_row.get("division_name") or "").strip()
+        if not division_name:
+            continue
+        color_map: dict[str, str] = {}
+        for index, code in enumerate(split_codes(division_row.get("member_state_codes") or "")):
+            color_map[code] = STATE_PALETTE[index % len(STATE_PALETTE)]
+        if not color_map:
+            continue
+        output_path = DIVISION_MEMBERSHIP_OUTPUT_DIR / f"{slugify(division_name)}_states_map.svg"
+        write_palette_map(
+            BLANK_MAP,
+            output_path,
+            f"{division_name} states",
+            color_map,
+            f"Unlabeled map showing the states in {division_name}.",
+        )
+        print(f"write {output_path.relative_to(REPO_ROOT)}")
+        written += 1
+    return written
+
+
+def split_codes(value: str) -> list[str]:
+    return [part.strip().upper() for part in value.split("|") if part.strip()]
+
+
 def main() -> int:
     if not BLANK_MAP.exists():
         raise FileNotFoundError(
@@ -124,8 +237,16 @@ def main() -> int:
 
     region_count = generate_group(regions, "region_name", REGION_OUTPUT_DIR)
     division_count = generate_group(divisions, "division_name", DIVISION_OUTPUT_DIR)
+    region_membership_count = build_region_division_membership_maps(regions, divisions)
+    division_membership_count = build_division_state_membership_maps(divisions)
 
-    print(f"done: regions={region_count} divisions={division_count}")
+    print(
+        "done: "
+        f"regions={region_count} "
+        f"divisions={division_count} "
+        f"region_membership_maps={region_membership_count} "
+        f"division_membership_maps={division_membership_count}"
+    )
     return 0
 
 

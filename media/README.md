@@ -5,6 +5,7 @@ Planned media layout:
 - `blank/` for shared blank U.S. base maps
 - `reference/` for labeled reference maps used for QA
 - `locator/` for region and division locator maps
+- `membership/` for unlabeled region-division and division-state answer maps
 
 Planned scripts:
 

@@ -50,7 +50,8 @@ Planned division cards:
 2. Division -> neighboring divisions / countries / oceans
 3. Division name + blank map -> locator map
 4. Locator map -> division name
-5. Division -> per-state border summary
+5. Division -> states
+6. Division -> per-state border summary
 
 ## Project Status
 
@@ -80,6 +81,8 @@ Generate the region and division locator SVGs:
 ```sh
 .venv/bin/python scripts/generate_locator_maps.py
 ```
+
+That step now also generates unlabeled region-division answer maps and division-state answer maps used on the backs of the membership cards.
 
 Populate the division state-border summaries from the state reference table:
 

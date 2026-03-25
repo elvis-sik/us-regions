@@ -31,8 +31,9 @@
 2. `Division -> Neighboring divisions / countries / oceans`
 3. `Division + Blank Map -> Locator Map`
 4. `Locator Map -> Division`
-5. `Division -> Per-state border summary`
+5. `Division -> States`
+6. `Division -> Per-state border summary`
 
 ## Build Notes
 
-The current plan is to derive locator maps from a single blank U.S. SVG whose state shapes are keyed by two-letter class abbreviations.
+The current plan is to derive locator maps and unlabeled state-membership maps from a single blank U.S. SVG whose state shapes are keyed by two-letter class abbreviations.

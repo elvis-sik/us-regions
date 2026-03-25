@@ -34,6 +34,11 @@ Cards:
 3. `Locator map -> region name`
 4. `Region -> divisions`
 
+Answer-side visuals:
+
+- show an unlabeled division-membership map on the back of the neighbor card
+- show the same division-membership map on the back of the divisions card
+
 Minimum fields:
 
 - `region_name`
@@ -61,7 +66,12 @@ Cards:
 2. `Division -> neighboring divisions / countries / oceans`
 3. `Division + blank map -> locator map`
 4. `Locator map -> division`
-5. `Division -> per-state border summary`
+5. `Division -> states`
+6. `Division -> per-state border summary`
+
+Answer-side visuals:
+
+- show an unlabeled state-membership map on the back of the states card
 
 Minimum fields:
 
@@ -102,10 +112,11 @@ Current support files:
 
 ## Media Plan
 
-We need two families of map assets:
+We need three families of map assets:
 
 1. One shared blank U.S. base map suitable for both region and division cards
 2. Locator maps for each of the four regions and nine divisions
+3. Unlabeled membership maps for region divisions and division states
 
 Current preferred approach:
 
@@ -125,9 +136,10 @@ Preferred asset characteristics:
 1. Confirm the hierarchy and seed the raw region and division tables.
 2. Fetch the shared blank map and reference maps from the source manifest.
 3. Generate region and division locator maps from state-code membership.
-4. Add a state border reference layer for the division notes.
-5. Build APKG generation scripts and note templates.
-6. Export and review the first deck package.
+4. Generate unlabeled region-division and division-state membership maps.
+5. Add a state border reference layer for the division notes.
+6. Build APKG generation scripts and note templates.
+7. Export and review the first deck package.
 
 ## Open Questions
 
