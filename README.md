@@ -63,6 +63,12 @@ The repo is currently a planning and data-seeding scaffold. The next implementat
 
 ## Build Workflow
 
+Install the deck-building dependencies:
+
+```sh
+uv sync --extra deck
+```
+
 Fetch the source map assets:
 
 ```sh
@@ -80,3 +86,13 @@ Populate the division state-border summaries from the state reference table:
 ```sh
 .venv/bin/python scripts/populate_division_border_summaries.py
 ```
+
+Build the Anki package:
+
+```sh
+.venv/bin/python scripts/build_apkg.py
+```
+
+Output:
+
+- `out/us-regions.apkg`

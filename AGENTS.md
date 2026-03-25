@@ -18,3 +18,4 @@ Current focus:
 
 - Commit often when making meaningful progress.
 - Push regularly once a remote exists.
+- Sign all commits with GPG (`git commit -S`).
