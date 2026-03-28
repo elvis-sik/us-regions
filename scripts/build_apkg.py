@@ -118,25 +118,27 @@ def html_state_border_rows(lines: list[str]) -> str:
 def shared_css() -> str:
     return """
 :root{
-  --paper:#f7f2e7;
-  --paper-deep:#e7dbc7;
-  --ink:#1f1a16;
-  --muted:#65584c;
-  --forest:#2f6a3a;
-  --forest-soft:#dfeada;
-  --navy:#21486d;
-  --rust:#9a5135;
-  --gold:#b6924b;
-  --rule:rgba(43,31,20,0.14);
-  --shadow:rgba(40,27,14,0.16);
+  --paper:#f8f3e7;
+  --paper-deep:#e7dac3;
+  --ink:#1c1b19;
+  --muted:#5f5a52;
+  --navy:#1f3a5f;
+  --navy-soft:#dbe5f1;
+  --red:#9e3d34;
+  --red-soft:#f0ddd8;
+  --gold:#b6934f;
+  --pine:#355742;
+  --pine-soft:#dce8df;
+  --rule:rgba(35,30,23,0.14);
+  --shadow:rgba(32,24,15,0.16);
 }
 .card{
   font-family:"Baskerville","Iowan Old Style","Palatino Linotype","Book Antiqua",serif;
   color:var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(182,146,75,0.14), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(33,72,109,0.12), transparent 28%),
-    linear-gradient(180deg, #fcf8f1 0%, var(--paper) 54%, #f0e5d4 100%);
+    radial-gradient(circle at top left, rgba(182,147,79,0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(31,58,95,0.10), transparent 30%),
+    linear-gradient(180deg, #fcf8f1 0%, var(--paper) 52%, #efe3cf 100%);
   font-size:20px;
   line-height:1.42;
   padding:22px 18px 28px;
@@ -146,18 +148,28 @@ def shared_css() -> str:
   margin:0 auto;
 }
 .plate{
-  background:linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.34));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.38));
   border:1px solid var(--rule);
   border-radius:26px;
   padding:22px 22px 24px;
   box-shadow:0 18px 40px var(--shadow);
+  position:relative;
+}
+.plate::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(182,147,79,0.18);
+  border-radius:18px;
+  pointer-events:none;
 }
 .eyebrow{
   font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
   text-transform:uppercase;
   letter-spacing:0.16em;
   font-size:11px;
-  color:var(--forest);
+  color:var(--navy);
   margin:0 0 10px;
 }
 .title{
@@ -165,6 +177,7 @@ def shared_css() -> str:
   line-height:0.98;
   letter-spacing:-0.03em;
   margin:0;
+  color:var(--navy);
 }
 .subtitle{
   font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
@@ -182,8 +195,9 @@ def shared_css() -> str:
 .answer-panel{
   margin-top:18px;
   border-radius:22px;
-  border:1px solid rgba(47,106,58,0.18);
-  background:linear-gradient(180deg, rgba(47,106,58,0.10), rgba(255,255,255,0.65));
+  border:1px solid rgba(31,58,95,0.16);
+  background:
+    linear-gradient(180deg, rgba(31,58,95,0.08), rgba(255,255,255,0.66));
   padding:18px 18px 16px;
 }
 .answer-label{
@@ -191,13 +205,14 @@ def shared_css() -> str:
   text-transform:uppercase;
   letter-spacing:0.14em;
   font-size:11px;
-  color:var(--rust);
+  color:var(--red);
   margin:0 0 8px;
 }
 .answer-main{
   font-size:34px;
   line-height:1.06;
   margin:0;
+  color:var(--navy);
 }
 .meta-grid{
   display:grid;
@@ -209,10 +224,11 @@ def shared_css() -> str:
     grid-template-columns:1fr 1fr;
   }
 }
-.fact-panel{
+.fact-panel,
+.border-row{
   border:1px solid var(--rule);
   border-radius:18px;
-  background:rgba(255,255,255,0.52);
+  background:rgba(255,255,255,0.56);
   padding:15px 16px 14px;
 }
 .fact-title{
@@ -220,7 +236,7 @@ def shared_css() -> str:
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:0.12em;
-  color:var(--navy);
+  color:var(--pine);
   margin:0 0 10px;
 }
 .chips{
@@ -233,10 +249,11 @@ def shared_css() -> str:
   align-items:center;
   border-radius:999px;
   padding:7px 12px;
-  background:var(--forest-soft);
-  color:#1f3c25;
+  background:linear-gradient(180deg, var(--navy-soft), #eef3f9);
+  color:var(--navy);
   font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
   font-size:14px;
+  border:1px solid rgba(31,58,95,0.10);
 }
 .detail-list{
   margin:0;
@@ -249,7 +266,8 @@ def shared_css() -> str:
   margin-top:18px;
   border-radius:22px;
   border:1px solid var(--rule);
-  background:linear-gradient(180deg, rgba(255,255,255,0.78), rgba(244,238,227,0.78));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.82), rgba(242,236,225,0.82));
   padding:16px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
 }
@@ -261,21 +279,16 @@ def shared_css() -> str:
   width:100%;
   max-width:100%;
   height:auto;
+  filter:saturate(0.95) contrast(1.02);
 }
 .border-grid{
   display:grid;
   gap:12px;
   margin-top:18px;
 }
-.border-row{
-  border:1px solid var(--rule);
-  border-radius:16px;
-  background:rgba(255,255,255,0.52);
-  padding:14px 15px 13px;
-}
 .border-state{
   font-size:20px;
-  color:var(--navy);
+  color:var(--red);
   margin:0 0 6px;
 }
 .border-details{
