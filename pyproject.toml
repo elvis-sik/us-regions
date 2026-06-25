@@ -23,6 +23,14 @@ package = false
 [tool.uv.pip]
 exclude-newer = "7 days"
 
+[tool.anki-addon-workbench]
+project_name = "U.S. Regions"
+seed_apkgs = ["out/us-regions.apkg"]
+anki_version = "25.09"
+docker_image = "us-regions-anki-workbench"
+docker_workbench_spec = "anki-addon-workbench[gui]==0.4.0"
+deck_smoke_render_limit = 3
+
 [tool.ruff]
 line-length = 100
 

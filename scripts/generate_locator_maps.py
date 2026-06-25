@@ -137,6 +137,8 @@ def write_palette_map(
 
     for element in state_elements(root):
         state_code = state_code_for_element(element)
+        if state_code is None:
+            continue
         element.set("fill", state_to_fill.get(state_code, DEFAULT_FILL))
         element.set("stroke", DEFAULT_STROKE)
         element.set("stroke-width", DEFAULT_STROKE_WIDTH)
