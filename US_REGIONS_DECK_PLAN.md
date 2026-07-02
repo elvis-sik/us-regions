@@ -38,6 +38,7 @@ Answer-side visuals:
 
 - show an unlabeled division-membership map on the back of the neighbor card
 - show the same division-membership map on the back of the divisions card
+- show an optional Wikipedia reference panel when the `Wikipedia` field is populated
 
 Minimum fields:
 
@@ -51,6 +52,7 @@ Minimum fields:
 - `member_states`
 - `member_state_codes`
 - `source_notes`
+- `Wikipedia`
 
 ### 2. Division Note Type
 
@@ -72,6 +74,7 @@ Cards:
 Answer-side visuals:
 
 - show an unlabeled state-membership map on the back of the states card
+- show an optional Wikipedia reference panel when the `Wikipedia` field is populated
 
 Minimum fields:
 
@@ -86,6 +89,7 @@ Minimum fields:
 - `member_state_codes`
 - `state_border_summary`
 - `source_notes`
+- `Wikipedia`
 
 ## Data Model Decisions
 

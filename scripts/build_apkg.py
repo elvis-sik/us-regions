@@ -116,8 +116,7 @@ def html_state_border_rows(lines: list[str]) -> str:
 
 
 def shared_css() -> str:
-    return """
-:root{
+    return """:root{
   --paper:#f8f3e7;
   --paper-deep:#e7dac3;
   --ink:#1c1b19;
@@ -297,6 +296,238 @@ def shared_css() -> str:
   color:var(--muted);
   white-space:pre-wrap;
 }
+
+.wiki-panel{
+  margin-top:18px;
+  border:1px solid var(--rule);
+  border-radius:18px;
+  background:rgba(255,255,255,0.56);
+  padding:15px 16px 14px;
+}
+
+.wiki-frame{
+  display:block;
+  width:100%;
+  height:420px;
+  border:1px solid rgba(31,58,95,0.12);
+  border-radius:14px;
+  background:rgba(255,255,255,0.82);
+}
+
+.wiki-link{
+  display:inline-block;
+  margin-top:10px;
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  font-size:14px;
+  color:var(--navy);
+  text-decoration:none;
+}
+
+.wiki-link:hover{
+  text-decoration:underline;
+}
+"""
+
+
+def division_css() -> str:
+    return """
+:root{
+  --paper:#f7f2e7;
+  --paper-deep:#e7dbc7;
+  --ink:#1f1a16;
+  --muted:#65584c;
+  --forest:#2f6a3a;
+  --forest-soft:#dfeada;
+  --navy:#21486d;
+  --rust:#9a5135;
+  --gold:#b6924b;
+  --rule:rgba(43,31,20,0.14);
+  --shadow:rgba(40,27,14,0.16);
+}
+.card{
+  font-family:"Baskerville","Iowan Old Style","Palatino Linotype","Book Antiqua",serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(182,146,75,0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(33,72,109,0.12), transparent 28%),
+    linear-gradient(180deg, #fcf8f1 0%, var(--paper) 54%, #f0e5d4 100%);
+  font-size:20px;
+  line-height:1.42;
+  padding:22px 18px 28px;
+}
+.wrap{
+  max-width:780px;
+  margin:0 auto;
+}
+.plate{
+  background:linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.34));
+  border:1px solid var(--rule);
+  border-radius:26px;
+  padding:22px 22px 24px;
+  box-shadow:0 18px 40px var(--shadow);
+}
+.eyebrow{
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  font-size:11px;
+  color:var(--forest);
+  margin:0 0 10px;
+}
+.title{
+  font-size:50px;
+  line-height:0.98;
+  letter-spacing:-0.03em;
+  margin:0;
+}
+.subtitle{
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  color:var(--muted);
+  font-size:18px;
+  margin-top:10px;
+}
+.prompt{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--rule);
+  color:var(--muted);
+  font-size:17px;
+}
+.answer-panel{
+  margin-top:18px;
+  border-radius:22px;
+  border:1px solid rgba(47,106,58,0.18);
+  background:linear-gradient(180deg, rgba(47,106,58,0.10), rgba(255,255,255,0.65));
+  padding:18px 18px 16px;
+}
+.answer-label{
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:11px;
+  color:var(--rust);
+  margin:0 0 8px;
+}
+.answer-main{
+  font-size:34px;
+  line-height:1.06;
+  margin:0;
+}
+.meta-grid{
+  display:grid;
+  gap:16px;
+  margin-top:18px;
+}
+@media (min-width:720px){
+  .meta-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+.fact-panel{
+  border:1px solid var(--rule);
+  border-radius:18px;
+  background:rgba(255,255,255,0.52);
+  padding:15px 16px 14px;
+}
+.fact-title{
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  color:var(--navy);
+  margin:0 0 10px;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:7px 12px;
+  background:var(--forest-soft);
+  color:#1f3c25;
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  font-size:14px;
+}
+.detail-list{
+  margin:0;
+  padding-left:18px;
+}
+.detail-list li{
+  margin:0 0 8px;
+}
+.map-frame{
+  margin-top:18px;
+  border-radius:22px;
+  border:1px solid var(--rule);
+  background:linear-gradient(180deg, rgba(255,255,255,0.78), rgba(244,238,227,0.78));
+  padding:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.map-frame-compact{
+  margin-top:16px;
+}
+.map-image{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+}
+.border-grid{
+  display:grid;
+  gap:12px;
+  margin-top:18px;
+}
+.border-row{
+  border:1px solid var(--rule);
+  border-radius:16px;
+  background:rgba(255,255,255,0.52);
+  padding:14px 15px 13px;
+}
+.border-state{
+  font-size:20px;
+  color:var(--navy);
+  margin:0 0 6px;
+}
+.border-details{
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  font-size:15px;
+  color:var(--muted);
+  white-space:pre-wrap;
+}
+
+.wiki-panel{
+  margin-top:18px;
+  border:1px solid var(--rule);
+  border-radius:18px;
+  background:rgba(255,255,255,0.52);
+  padding:15px 16px 14px;
+}
+
+.wiki-frame{
+  display:block;
+  width:100%;
+  height:420px;
+  border:1px solid rgba(33,72,109,0.12);
+  border-radius:14px;
+  background:rgba(255,255,255,0.82);
+}
+
+.wiki-link{
+  display:inline-block;
+  margin-top:10px;
+  font-family:"Avenir Next","Gill Sans","Trebuchet MS",sans-serif;
+  font-size:14px;
+  color:var(--navy);
+  text-decoration:none;
+}
+
+.wiki-link:hover{
+  text-decoration:underline;
+}
 """
 
 
@@ -318,6 +549,7 @@ def region_fieldnames() -> list[str]:
         "Card_BlankMap_HTML",
         "Card_LocatorMap_HTML",
         "Card_DivisionsMap_HTML",
+        "Wikipedia",
     ]
 
 
@@ -340,13 +572,14 @@ def division_fieldnames() -> list[str]:
         "Card_BlankMap_HTML",
         "Card_LocatorMap_HTML",
         "Card_StatesMap_HTML",
+        "Wikipedia",
     ]
 
 
 def region_model() -> genanki.Model:
     return genanki.Model(
         REGION_MODEL_ID,
-        "U.S. Region",
+        "U.S. Region+",
         fields=[{"name": name} for name in region_fieldnames()],
         templates=[
             {
@@ -364,7 +597,16 @@ def region_model() -> genanki.Model:
   <div class="answer-label">Borders</div>
   <div class="meta-grid">{{Card_Neighbors_HTML}}</div>
   {{Card_DivisionsMap_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -382,7 +624,16 @@ def region_model() -> genanki.Model:
 <div class="wrap"><div class="answer-panel">
   <div class="answer-label">Locator Map</div>
   {{Card_LocatorMap_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -400,7 +651,16 @@ def region_model() -> genanki.Model:
   <div class="answer-label">Answer</div>
   <div class="answer-main">{{region_name}}</div>
   <div class="meta-grid">{{Card_Divisions_HTML}}{{Card_MemberStates_HTML}}</div>
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -418,7 +678,16 @@ def region_model() -> genanki.Model:
   <div class="answer-label">Divisions</div>
   <div class="meta-grid">{{Card_Divisions_HTML}}</div>
   {{Card_DivisionsMap_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
         ],
@@ -429,7 +698,7 @@ def region_model() -> genanki.Model:
 def division_model() -> genanki.Model:
     return genanki.Model(
         DIVISION_MODEL_ID,
-        "U.S. Division",
+        "U.S. Division+",
         fields=[{"name": name} for name in division_fieldnames()],
         templates=[
             {
@@ -447,7 +716,16 @@ def division_model() -> genanki.Model:
   <div class="answer-label">Region</div>
   <div class="answer-main">{{region_name}}</div>
   <div class="meta-grid">{{Card_MemberStates_HTML}}</div>
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -465,7 +743,16 @@ def division_model() -> genanki.Model:
 <div class="wrap"><div class="answer-panel">
   <div class="answer-label">Borders</div>
   <div class="meta-grid">{{Card_Neighbors_HTML}}</div>
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -484,7 +771,16 @@ def division_model() -> genanki.Model:
 <div class="wrap"><div class="answer-panel">
   <div class="answer-label">Locator Map</div>
   {{Card_LocatorMap_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -503,7 +799,16 @@ def division_model() -> genanki.Model:
   <div class="answer-main">{{division_name}}</div>
   <div class="subtitle">{{region_name}}</div>
   <div class="meta-grid">{{Card_MemberStates_HTML}}</div>
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -522,7 +827,16 @@ def division_model() -> genanki.Model:
   <div class="answer-label">States</div>
   <div class="meta-grid">{{Card_MemberStates_HTML}}</div>
   {{Card_StatesMap_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
             {
@@ -540,11 +854,20 @@ def division_model() -> genanki.Model:
 <div class="wrap"><div class="answer-panel">
   <div class="answer-label">Per-State Borders</div>
   {{Card_StateBorders_HTML}}
-</div></div>
+</div>
+
+{{#Wikipedia}}
+<div class="wiki-panel">
+  <div class="fact-title">Wikipedia</div>
+  <iframe class="wiki-frame" src="{{Wikipedia}}"></iframe>
+  <a class="wiki-link" href="{{Wikipedia}}">Open in browser</a>
+</div>
+{{/Wikipedia}}
+</div>
 """,
             },
         ],
-        css=shared_css(),
+        css=division_css(),
     )
 
 
@@ -576,6 +899,7 @@ def make_region_note(model: genanki.Model, row: dict[str, str]) -> genanki.Note:
         make_map_html(blank_filename, f"Blank U.S. map for {name}"),
         make_map_html(locator_filename, f"Locator map for {name}"),
         make_compact_map_html(divisions_map_filename, f"Division map for {name}"),
+        row.get("Wikipedia") or "",
     ]
     return genanki.Note(model=model, fields=fields, guid=genanki.guid_for("region", name))
 
@@ -609,6 +933,7 @@ def make_division_note(model: genanki.Model, row: dict[str, str]) -> genanki.Not
         make_map_html(blank_filename, f"Blank U.S. map for {name}"),
         make_map_html(locator_filename, f"Locator map for {name}"),
         make_compact_map_html(states_map_filename, f"State membership map for {name}"),
+        row.get("Wikipedia") or "",
     ]
     return genanki.Note(model=model, fields=fields, guid=genanki.guid_for("division", name))
 
