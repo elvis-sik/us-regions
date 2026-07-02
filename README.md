@@ -1,6 +1,13 @@
 # us-regions
 
+[![Anki Workbench](https://github.com/elvis-sik/us-regions/actions/workflows/anki-workbench.yml/badge.svg)](https://github.com/elvis-sik/us-regions/actions/workflows/anki-workbench.yml)
+![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)
+![Anki Workbench 0.4.0](https://img.shields.io/badge/anki--addon--workbench-0.4.0-informational)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 An Anki deck generator for the U.S. Census Bureau's four regions and nine divisions, with map-based cards for regions, divisions, and member states.
+
+![U.S. regions card preview](docs/screenshots/readme-preview.png)
 
 ## AI provenance
 
@@ -112,6 +119,14 @@ Output:
 
 - `out/us-regions.apkg`
 
+## Preview screenshot
+
+The README screenshot is generated from the built APKG in a disposable Anki profile:
+
+```sh
+uv run --extra dev python scripts/capture_readme_screenshot.py
+```
+
 ## Sources
 
 Primary reference:
@@ -125,4 +140,7 @@ Map provenance is documented in [`data/raw/us_map_asset_sources.csv`](data/raw/u
 - review card wording for mnemonic quality, not just factual correctness
 - visually inspect the generated maps in Anki before publishing
 - keep generated outputs reproducible from the checked-in CSV and script pipeline
-- consider adding screenshots once the card styling is fully settled
+
+## License
+
+Repository code and documentation are MIT licensed. Source maps and reference data keep their upstream licenses and attribution requirements as documented in the data manifests.

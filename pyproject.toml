@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Tools to build an Anki deck for U.S. Census regions and divisions."
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
 dependencies = []
 
 [project.optional-dependencies]
@@ -12,6 +13,7 @@ deck = [
   "requests>=2.31.0",
 ]
 dev = [
+  "anki-addon-workbench[gui]==0.4.0",
   "mypy>=1.13.0",
   "ruff>=0.6.0",
 ]
