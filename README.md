@@ -8,18 +8,6 @@ An Anki deck generator for the U.S. Census Bureau's four regions and nine divisi
 
 ![U.S. regions card preview](docs/screenshots/readme-preview.png)
 
-## AI provenance
-
-This repository was created with substantial AI assistance, including:
-
-- project scaffolding
-- source-data shaping
-- SVG map-generation scripts
-- Genanki deck-building code
-- documentation drafts
-
-Everything here should be treated as editable project output, not as an authority in itself. Human review is still important, especially for geography wording, card ergonomics, and public-facing polish.
-
 ## What this repo builds
 
 The deck teaches the standard Census hierarchy:
