@@ -1,12 +1,17 @@
 # us-regions
 
 [![Anki Workbench](https://github.com/elvis-sik/us-regions/actions/workflows/anki-workbench.yml/badge.svg)](https://github.com/elvis-sik/us-regions/actions/workflows/anki-workbench.yml)
+[![AnkiWeb](https://img.shields.io/badge/AnkiWeb-shared_deck-15a5ef)](https://ankiweb.net/shared/info/778756695)
 ![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 An Anki deck generator for the U.S. Census Bureau's four regions and nine divisions, with map-based cards for regions, divisions, and member states.
 
 ![U.S. regions card preview](docs/screenshots/readme-preview.png)
+
+## Download
+
+Install the shared deck from [AnkiWeb](https://ankiweb.net/shared/info/778756695).
 
 ## What this repo builds
 
@@ -113,12 +118,6 @@ Primary reference:
 - [List of regions of the United States](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States)
 
 Map provenance is documented in [`data/raw/us_map_asset_sources.csv`](data/raw/us_map_asset_sources.csv).
-
-## Notes for a future public release
-
-- review card wording for mnemonic quality, not just factual correctness
-- visually inspect the generated maps in Anki before publishing
-- keep generated outputs reproducible from the checked-in CSV and script pipeline
 
 ## License
 
