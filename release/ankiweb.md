@@ -4,7 +4,7 @@ tags: united-states geography maps census regions divisions
 support_url: https://github.com/ritornello-labs/us-regions
 ---
 
-![U.S. regions card preview](https://raw.githubusercontent.com/elvis-sik/us-regions/main/docs/screenshots/readme-preview.png)
+![U.S. regions card preview](https://raw.githubusercontent.com/ritornello-labs/us-regions/main/docs/screenshots/readme-preview.png)
 
 Map-based Anki cards for the U.S. Census Bureau's four regions and nine divisions.
 
